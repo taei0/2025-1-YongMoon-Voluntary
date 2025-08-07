@@ -1,0 +1,195 @@
+html
+
+<link rel="stylesheet" href="style.css" />
+
+
+
+  <header class="main-header">
+    <h1 class="main-title">김태이의 자기소개 블로그</h1>
+    <p class="id-name">10804 김태이</p>
+    <button id="toggle-mode">🌙 다크모드</button>
+  </header>
+
+  <section class="fade-in">
+    <h2>👋 자기소개</h2>
+    <p>
+      ...
+    </p>
+  </section>
+
+  <hr class="section-divider" />
+
+  <section class="fade-in">
+    <h2>🛠 기술 스택</h2>
+    <ul>
+      <li><strong>HTML</strong> – 웹 페이지의 뼈대</li>
+      <li><strong>CSS</strong> – 스타일과 애니메이션</li>
+      <li><strong>JavaScript</strong> – 동작과 상호작용</li>
+    </ul>
+  </section>
+
+  <hr class="section-divider" />
+
+  <section class="fade-in">
+    <h2>🎯 나의 목표</h2>
+    <p>
+      ...시간
+    </p>
+  </section>
+
+  <footer class="footer">
+    <p>© 2025 </p>
+  </footer>
+
+  <script src="script.js"></script>
+
+  css
+ :root {
+  --bg-color: #f9f9fb;
+  --text-color: #333;
+  --header-bg: #4a90e2;
+  --section-title: #4a90e2;
+  --footer-color: #777;
+  --divider-color: #ccc;
+}
+
+body.dark-mode {
+  --bg-color: #121212;
+  --text-color: #eeeeee;
+  --header-bg: #1e1e1e;
+  --section-title: #81c784;
+  --footer-color: #aaa;
+  --divider-color: #444;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.4s, color 0.4s;
+}
+
+/* 헤더 */
+.main-header {
+  background-color: var(--header-bg);
+  color: white;
+  padding: 80px 20px;
+  text-align: center;
+  position: relative;
+}
+
+.main-title {
+  font-size: 42px;
+  margin-bottom: 10px;
+}
+
+.id-name {
+  font-size: 16px;
+  font-weight: 400;
+  opacity: 0.9;
+  text-align: right;
+  margin-top: 20px;
+  position: relative;
+  right: 10px;
+  display: block;
+}
+
+/* 다크모드 버튼 */
+#toggle-mode {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: white;
+  color: #333;
+  border: none;
+  padding: 8px 14px;
+  font-size: 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s;
+}
+
+body.dark-mode #toggle-mode {
+  background: #333;
+  color: #fff;
+}
+
+/* 섹션 */
+section {
+  max-width: 800px;
+  margin: 60px auto;
+  padding: 0 20px;
+  position: relative;
+  left: 10px;
+}
+
+h2 {
+  font-size: 28px;
+  color: var(--section-title);
+  margin-bottom: 15px;
+}
+
+p, li {
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+ul {
+  padding-left: 20px;
+}
+
+li {
+  margin-bottom: 10px;
+}
+
+/* 구분선 */
+.section-divider {
+  border: none;
+  height: 1px;
+  background-color: var(--divider-color);
+  width: 80%;
+  margin: 60px auto;
+}
+
+/* 푸터 */
+.footer {
+  text-align: center;
+  padding: 40px 0;
+  font-size: 14px;
+  color: var(--footer-color);
+}
+
+/* 애니메이션 */
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+ javascript
+
+ // 다크모드 버튼
+document.addEventListener('DOMContentLoaded', () => {
+  const toggleBtn = document.getElementById('toggle-mode');
+  toggleBtn.addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
+    toggleBtn.textContent = document.body.classList.contains('dark-mode')
+      ? '☀️ 라이트모드'
+      : '🌙 다크모드';
+  });
+
+  // 페이드인 애니메이션
+  const sections = document.querySelectorAll('.fade-in');
+  sections.forEach((section, index) => {
+    setTimeout(() => {
+      section.classList.add('visible');
+    }, index * 300);
+  });
+});
